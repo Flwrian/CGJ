@@ -17,6 +17,7 @@ public class Bucher : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        oldSpeed = GetComponent<Unit>().getAttackSpeed();
         isSpeeded = false;
         timeBtwSpeedBoost = btwSpeedDelay;
     }

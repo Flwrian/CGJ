@@ -21553,7 +21553,7 @@ GameObject:
   - component: {fileID: 1767292256}
   - component: {fileID: 1767292255}
   - component: {fileID: 1767292254}
-  m_Layer: 3
+  m_Layer: 7
   m_Name: Bucheron
   m_TagString: Untagged
   m_Icon: {fileID: 0}

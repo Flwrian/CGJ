@@ -202,15 +202,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2fa7b6a2913f7a5b5a85a951e55ac4c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxLife: 80
   lifePoint: 80
-  range: 5
-  attackDelay: 1.5
-  damage: 10
+  range: 8
+  attackDelay: 1.2
+  damage: 20
   detectionRange: 10
   ennemy:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 8
   team: 0
+  fogOfWar: {fileID: 8465826217944509825, guid: 3bc9769fef0d91dff984402f2a63c4a0, type: 3}
+  fogTile: {fileID: 11400000, guid: 3c217b9ba896e07fbb651641ca72d33f, type: 2}
+  appearRange: 10
+  disappearRange: 4
 --- !u!50 &5286312021136175607
 Rigidbody2D:
   serializedVersion: 4

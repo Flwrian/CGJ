@@ -85,7 +85,9 @@ public class UnitDrag : MonoBehaviour
     {
         foreach(var unit in UnitSelection.Instance.unitList){
             if(selectionBox.Contains(myCam.WorldToScreenPoint(unit.transform.position))){
-                UnitSelection.Instance.DragSelect(unit);
+                if(unit.layer == 3){
+                    UnitSelection.Instance.DragSelect(unit);
+                }
             }
         }
     }
