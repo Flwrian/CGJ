@@ -266,5 +266,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ccb01c1f18fc1db5da4326b672879767, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  autoHeal: 0
-  healDelay: 0
+  autoHeal: 15
+  healDelay: 10

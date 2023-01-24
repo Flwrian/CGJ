@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 7910015903360246706}
   - component: {fileID: 7910015903360246669}
   - component: {fileID: 7910015903360246668}
+  - component: {fileID: -6578449477343624499}
   m_Layer: 3
   m_Name: Bucheron
   m_TagString: Untagged
@@ -124,7 +125,7 @@ MonoBehaviour:
   detectionRange: 15
   ennemy:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 8
   team: 0
 --- !u!50 &7910015903360246669
 Rigidbody2D:
@@ -169,6 +170,21 @@ NavMeshAgent:
   m_BaseOffset: 0.875
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &-6578449477343624499
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7910015903360246671}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25ad9e2543c4c8b16954ef782b646197, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 1.2
+  btwSpeedDelay: 4
+  speedDelay: 5
 --- !u!1 &7910015904146857730
 GameObject:
   m_ObjectHideFlags: 0
