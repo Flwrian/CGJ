@@ -205,7 +205,7 @@ MonoBehaviour:
   range: 2
   attackDelay: 4
   damage: 35
-  detectionRange: 15
+  detectionRange: 10
   ennemy:
     serializedVersion: 2
     m_Bits: 128
