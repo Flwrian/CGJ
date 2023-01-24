@@ -12,6 +12,7 @@ public class Unit : MonoBehaviour
     private static KeyCode consum = KeyCode.A; 
 
     [Header("CombatSection")]
+    [SerializeField]
     private float maxLife;
     [SerializeField]
     private float lifePoint;
@@ -124,7 +125,9 @@ public class Unit : MonoBehaviour
                 }
 
             }
-        }  
+        }
+
+        updateFogOfWar();
 
     }
 

@@ -26,7 +26,7 @@ public class Soldier : MonoBehaviour
     {
         if(isBoosted){
             if(timeForAttackDuration <= 0){
-                GetComponent<Unit>().setAttackSpeed(oldAttack);
+                GetComponent<Unit>().setDamage(oldAttack);
                 isBoosted = false;
             }else{
                 timeForAttackDuration -= Time.deltaTime;
