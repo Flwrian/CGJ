@@ -166,6 +166,23 @@ public class Unit : MonoBehaviour
         lifePoint -= damage;
     }
 
+    public void setAttackSpeed(float speed){
+        attackDelay = speed;
+    }
+    
+    public float getAttackSpeed(){
+        return attackDelay;
+    }
+
+
+    public void setDamage(float damage){
+        this.damage = damage;
+    }
+
+    public float getDamage(){
+        return damage;
+    }
+
     public void GetHealed(float heal){
         if(lifePoint + heal >= maxLife){
             lifePoint = maxLife;
