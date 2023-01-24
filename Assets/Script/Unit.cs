@@ -164,7 +164,6 @@ public class Unit : MonoBehaviour
     public void SetDestination(Vector3 dest,float stopingDistance){
         isMoving = true;
         agent.stoppingDistance = stopingDistance;
-        Debug.Log("set");
         agent.SetDestination(dest);
     }
 
@@ -173,14 +172,12 @@ public class Unit : MonoBehaviour
         if(targ != null){
             this.SetDestination(targ.transform.position,range);
 
-            Debug.Log("UNIT TARGET");
         }
 
         target = targ;
     }
 
     public void TakeDamage(float damage){
-        Debug.Log("UNit damaged");
         lifePoint -= damage;
     }
 
@@ -239,7 +236,7 @@ public class Unit : MonoBehaviour
 
 
                 if(visited.Contains(new Vector2Int(newPos.x, newPos.y))){
-                    Tile tile = new Tile();
+                    Tile tile = ScriptableObject.CreateInstance<Tile>();
                     tile.sprite = fogTile.sprite;
                     tile.color = new Color(0.5f, 0.5f, 0.5f, 0.5f);
                     fogOfWar.SetTile(newPos, tile);
