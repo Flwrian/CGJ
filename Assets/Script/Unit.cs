@@ -145,7 +145,7 @@ public class Unit : MonoBehaviour
             }
         }
 
-        updateFogOfWar();
+        //updateFogOfWar();
 
     }
 
