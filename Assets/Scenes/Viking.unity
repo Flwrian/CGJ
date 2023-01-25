@@ -9420,7 +9420,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!95 &1163502455
 Animator:
   serializedVersion: 4
@@ -9431,7 +9431,7 @@ Animator:
   m_GameObject: {fileID: 1163502454}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 00ddf3eeecaa62e4cbe3dce938f8815c, type: 2}
+  m_Controller: {fileID: 9100000, guid: 8bb5ef73f6ea5cc1ca33c9feaa0f37c9, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -11338,6 +11338,7 @@ MonoBehaviour:
   ennemy:
     serializedVersion: 2
     m_Bits: 128
+  marker: {fileID: 1163502454}
   line: 1
   square: 0
   triangle: 0
