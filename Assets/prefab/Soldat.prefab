@@ -204,8 +204,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2fa7b6a2913f7a5b5a85a951e55ac4c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxLife: 80
-  lifePoint: 80
+  maxLife: 150
+  lifePoint: 100
   range: 8
   attackDelay: 1.2
   damage: 20
