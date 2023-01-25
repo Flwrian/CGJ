@@ -34,6 +34,10 @@ public class Unit : MonoBehaviour
     private int team;
     private bool isMoving;
     public bool isDead;
+    [SerializeField]
+    private Animator anim;
+    private Rigidbody2D r;
+
 
     /* ------------ Fog of War -------------- */
     public Tilemap fogOfWar;
@@ -50,6 +54,8 @@ public class Unit : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        anim = GetComponent<Animator>();
+        r = GetComponent<Rigidbody2D>();
         isDead = false;
         isMoving = false;
         target = null;
@@ -70,21 +76,68 @@ public class Unit : MonoBehaviour
     void Update()
     {
 
+        if(isMoving){
+                anim.SetBool("isWalk",true);
+                float x = agent.velocity.x;
+                float y = agent.velocity.y;
+                if(!(x == 0 && y == 0) && !isAttacking){//
+                        bool xNeg = x <= 0;
+                        bool yNeg = y <= 0;
+                        x = Mathf.Abs(x);
+                        y = Mathf.Abs(y);
+                        if(x > y){
+                            if(xNeg){
+                                anim.SetFloat("X",-1);
+                                anim.SetFloat("Y",0);
+                            }
+                            else{
+                                anim.SetFloat("X",1);
+                                anim.SetFloat("Y",0);
+                            }
+                        }
+                        else{
+                            if(yNeg){
+                                anim.SetFloat("Y",-1);
+                                anim.SetFloat("X",0);
+
+                            }else{
+                                anim.SetFloat("Y",1);
+                                anim.SetFloat("X",0);
+
+                            }
+                        }
+                }
+
+
+
+
+        }
+        else{
+            anim.SetBool("isWalk",false);
+        }
+
         if(lifePoint <= 0){
             isDead = true;
             if(gameObject.layer == 3){
-
+                anim.SetBool("isSkeleton",true);
             }
             else{
-                gameObject.layer = 8;
+
             }
             if(gameObject.layer == 8){
+                gameObject.layer = 8;
+                anim.SetBool("isWalk",false);
+                anim.SetBool("isGrave",false);
+                anim.SetBool("isSkeleton",false);
+                anim.SetBool("isGrave",true);
                 SpriteRenderer sp = GetComponent<SpriteRenderer>();
                 sp.color = Color.gray;
                 
                 LayerMask human = LayerMask.GetMask("Clickable");
                 if(Physics2D.OverlapCircle(transform.position,detectionRange,human)){
                     if(Input.GetKeyDown(recrut)){
+                        anim.SetBool("isGrave",false);
+
                         isDead = false;
                         ennemy = LayerMask.GetMask("ennemy");
                         gameObject.layer = 3;
@@ -93,6 +146,7 @@ public class Unit : MonoBehaviour
 
                     }
                     else if(Input.GetKeyDown(consum)){
+                        anim.SetBool("isSkeleton",true);
                         //commande pour boost le temps
                         // anim pour le squelette 
                         Destroy(this.gameObject);
@@ -110,25 +164,35 @@ public class Unit : MonoBehaviour
                     isAttacking = false; 
                     isMoving = false;
                     target = null;
+                    anim.SetBool("isWalk",false);
+                    anim.SetBool("isAttack",false);
+
                     return;
                 }
                 if(CheckDestroy.IsNullOrDestroyed(target)){
                     target = null;
                     isAttacking = false;
                     isMoving = false;
+                    anim.SetBool("isWalk",false);
+
                     return;
                 }
                 else if(Vector2.Distance(gameObject.transform.position,target.GetComponent<Transform>().position) <= range && !isAttacking){
                     isAttacking = true;
+                    anim.SetBool("isWalk",false);
+
                 }
                 else if(Vector2.Distance(gameObject.transform.position,target.GetComponent<Transform>().position) > range){
                     isAttacking = false;
+                    anim.SetBool("isAttack",false);        
+
                 }
                 
                 if(isAttacking && timeBtwAttack <= 0){
                     AttackEnnemy();
                     timeBtwAttack = attackDelay;
                 }else{
+
                     timeBtwAttack -= Time.deltaTime;
                 }
 
@@ -149,6 +213,7 @@ public class Unit : MonoBehaviour
 
     }
 
+
     public bool pathComplete()
     {
         if(agent.remainingDistance > 0.1f) {
@@ -158,11 +223,12 @@ public class Unit : MonoBehaviour
      }
 
     private void AttackEnnemy(){
-
+        anim.SetBool("isAttack",true);
         if(target != null){
             target.GetComponent<Unit>().TakeDamage(damage);
-        }        
+        }
 
+        //anim set idle
     }
 
 

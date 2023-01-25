@@ -9,6 +9,7 @@ public class UnitClick : MonoBehaviour
     public LayerMask ground;
     public LayerMask ennemy;
     private static UnitFormation form;
+    public GameObject marker;
 
     public bool line = true;
     public bool square = false;
@@ -49,7 +50,11 @@ public class UnitClick : MonoBehaviour
                 }
             }
             if(Input.GetMouseButtonDown(1)){
+                
                 Vector2 mousePos = myCam.ScreenToWorldPoint(Input.mousePosition);
+                marker.transform.position = mousePos;
+                marker.SetActive(true);
+                StartCoroutine(markereur());
                 Collider2D hit = null;
                 hit = Physics2D.OverlapCircle(new Vector2(mousePos.x,mousePos.y),0.5f,ground);
                 if(hit != null){
@@ -81,6 +86,13 @@ public class UnitClick : MonoBehaviour
     }
     public static void setFormation(UnitFormation unit){
         form = unit;
+    }
+
+
+    public IEnumerator Markereur(){
+        yield return new WaitForSeconds(2);
+        marker.SetActive(false);
+
     }
 
 }
