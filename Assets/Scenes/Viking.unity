@@ -1126,6 +1126,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -3558635615869555897, guid: b7aca2df835adb70da7449522be2e677, type: 3}
+      propertyPath: attack
+      value: 25
+      objectReference: {fileID: 0}
     - target: {fileID: 5286312021136175603, guid: b7aca2df835adb70da7449522be2e677, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -1178,6 +1182,10 @@ PrefabInstance:
       propertyPath: fogOfWar
       value: 
       objectReference: {fileID: 138535245}
+    - target: {fileID: 5286312021136175604, guid: b7aca2df835adb70da7449522be2e677, type: 3}
+      propertyPath: ennemy.m_Bits
+      value: 128
+      objectReference: {fileID: 0}
     - target: {fileID: 5286312021136175609, guid: b7aca2df835adb70da7449522be2e677, type: 3}
       propertyPath: m_Name
       value: Soldat

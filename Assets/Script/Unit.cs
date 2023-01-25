@@ -99,11 +99,12 @@ public class Unit : MonoBehaviour
                 
                 if(CheckDestroy.IsNullOrDestroyed(target) || target.GetComponent<Unit>().getLifePoint() <= 0){
                     target = null;
+                    return;
                 }
                 else if(Vector2.Distance(gameObject.transform.position,target.GetComponent<Transform>().position) <= range && !isAttacking){
                     isAttacking = true;
                 }
-                else{
+                else if(Vector2.Distance(gameObject.transform.position,target.GetComponent<Transform>().position) > range){
                     isAttacking = false;
                 }
                 
@@ -168,13 +169,20 @@ public class Unit : MonoBehaviour
     }
 
     public void SetNewTarget(GameObject targ){
-        isAttacking = false;
-        if(targ != null){
-            this.SetDestination(targ.transform.position,range);
+        if(this.getLifePoint() > 0){
+
+            isAttacking = false;
+            if(targ != null){
+                if(targ.GetComponent<Unit>().getLifePoint() <= 0){
+                    return;
+                }
+                this.SetDestination(targ.transform.position,range);
+
+            }
+            target = targ;
 
         }
 
-        target = targ;
     }
 
     public void TakeDamage(float damage){

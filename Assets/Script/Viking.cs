@@ -19,7 +19,7 @@ public class Viking : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(GetComponent<Unit>().getLifePoint() == 0){
+        if(GetComponent<Unit>().getLifePoint() <= 0){
             return;
         }
         if(timeBtwHeal <= 0){
