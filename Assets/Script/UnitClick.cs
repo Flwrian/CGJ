@@ -54,7 +54,7 @@ public class UnitClick : MonoBehaviour
                 Vector2 mousePos = myCam.ScreenToWorldPoint(Input.mousePosition);
                 marker.transform.position = mousePos;
                 marker.SetActive(true);
-                StartCoroutine(markereur());
+                StartCoroutine(ExampleCoroutine());
                 Collider2D hit = null;
                 hit = Physics2D.OverlapCircle(new Vector2(mousePos.x,mousePos.y),0.5f,ground);
                 if(hit != null){
@@ -88,11 +88,15 @@ public class UnitClick : MonoBehaviour
         form = unit;
     }
 
+    IEnumerator<WaitForSeconds> ExampleCoroutine()
+    {
+        //Print the time of when the function is first called.
 
-    public IEnumerator Markereur(){
-        yield return new WaitForSeconds(2);
+        //yield on a new YieldInstruction that waits for 5 seconds.
+        yield return new WaitForSeconds(1);
         marker.SetActive(false);
-
+        //After we have waited 5 seconds print the time again.
     }
+
 
 }
