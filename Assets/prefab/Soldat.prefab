@@ -99,6 +99,8 @@ GameObject:
   - component: {fileID: 5286312021136175607}
   - component: {fileID: 5286312021136175606}
   - component: {fileID: -3558635615869555897}
+  - component: {fileID: 2145009456101424389}
+  - component: {fileID: 902967727819197558}
   m_Layer: 3
   m_Name: Soldat
   m_TagString: Untagged
@@ -163,7 +165,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 458506058, guid: aedc66d06c164bc2b88beefdade26185, type: 3}
+  m_Sprite: {fileID: 1422559483, guid: 729bb9972a2d51e419352ae82be871b4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -210,7 +212,7 @@ MonoBehaviour:
   detectionRange: 10
   ennemy:
     serializedVersion: 2
-    m_Bits: 8
+    m_Bits: 136
   team: 0
   fogOfWar: {fileID: 8465826217944509825, guid: 3bc9769fef0d91dff984402f2a63c4a0, type: 3}
   fogTile: {fileID: 11400000, guid: 3c217b9ba896e07fbb651641ca72d33f, type: 2}
@@ -274,3 +276,38 @@ MonoBehaviour:
   attack: 15
   btwAttackDelay: 5
   AttackDelay: 5
+--- !u!95 &2145009456101424389
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5286312021136175609}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 00ddf3eeecaa62e4cbe3dce938f8815c, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!111 &902967727819197558
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5286312021136175609}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: 0ded0c306b91aa34682a8b479129e59d, type: 2}
+  m_Animations: []
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0

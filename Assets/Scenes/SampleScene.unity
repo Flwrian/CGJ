@@ -18589,6 +18589,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2fa7b6a2913f7a5b5a85a951e55ac4c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxLife: 0
   lifePoint: 100
   range: 2
   attackDelay: 4
@@ -18598,6 +18599,10 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   team: 0
+  fogOfWar: {fileID: 0}
+  fogTile: {fileID: 0}
+  appearRange: 10
+  disappearRange: 4
 --- !u!70 &647946320
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -18758,6 +18763,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2fa7b6a2913f7a5b5a85a951e55ac4c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxLife: 0
   lifePoint: 80
   range: 5
   attackDelay: 1.5
@@ -18767,6 +18773,10 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   team: 0
+  fogOfWar: {fileID: 0}
+  fogTile: {fileID: 0}
+  appearRange: 10
+  disappearRange: 4
 --- !u!70 &678826811
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -19030,6 +19040,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2fa7b6a2913f7a5b5a85a951e55ac4c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxLife: 0
   lifePoint: 150
   range: 1
   attackDelay: 2
@@ -19039,6 +19050,10 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   team: 0
+  fogOfWar: {fileID: 0}
+  fogTile: {fileID: 0}
+  appearRange: 10
+  disappearRange: 4
 --- !u!70 &758487994
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -21615,6 +21630,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2fa7b6a2913f7a5b5a85a951e55ac4c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxLife: 0
   lifePoint: 60
   range: 1
   attackDelay: 1.5
@@ -21624,6 +21640,10 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   team: 0
+  fogOfWar: {fileID: 0}
+  fogTile: {fileID: 0}
+  appearRange: 10
+  disappearRange: 4
 --- !u!70 &1767292257
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

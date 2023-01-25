@@ -120,7 +120,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxLife: 100
   lifePoint: 60
-  range: 1
+  range: 2
   attackDelay: 1.5
   damage: 15
   detectionRange: 10
