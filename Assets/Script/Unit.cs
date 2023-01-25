@@ -33,6 +33,7 @@ public class Unit : MonoBehaviour
     [SerializeField]//
     private int team;
     private bool isMoving;
+    private bool isDead;
 
     /* ------------ Fog of War -------------- */
     public Tilemap fogOfWar;
@@ -49,6 +50,7 @@ public class Unit : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        isDead = false;
         isMoving = false;
         target = null;
         agent = gameObject.GetComponent<NavMeshAgent>();
@@ -69,6 +71,7 @@ public class Unit : MonoBehaviour
     {
 
         if(lifePoint <= 0){
+            isDead = true;
             if(gameObject.layer == 7){
                 SpriteRenderer sp = GetComponent<SpriteRenderer>();
                 sp.color = Color.gray;
@@ -76,6 +79,7 @@ public class Unit : MonoBehaviour
                 LayerMask human = LayerMask.GetMask("Clickable");
                 if(Physics2D.OverlapCircle(transform.position,detectionRange,human)){
                     if(Input.GetKeyDown(recrut)){
+                        isDead = false;
                         ennemy = LayerMask.GetMask("ennemy");
                         gameObject.layer = 3;
                         lifePoint = 100;
@@ -163,13 +167,16 @@ public class Unit : MonoBehaviour
     }
 
     public void SetDestination(Vector3 dest,float stopingDistance){
-        isMoving = true;
-        agent.stoppingDistance = stopingDistance;
-        agent.SetDestination(dest);
+        if(!isDead){
+            isMoving = true;
+            agent.stoppingDistance = stopingDistance;
+            agent.SetDestination(dest);
+        }
+
     }
 
     public void SetNewTarget(GameObject targ){
-        if(this.getLifePoint() > 0){
+        if(!isDead){
 
             isAttacking = false;
             if(targ != null){
