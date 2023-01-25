@@ -33,7 +33,7 @@ public class Unit : MonoBehaviour
     [SerializeField]//
     private int team;
     private bool isMoving;
-    private bool isDead;
+    public bool isDead;
 
     /* ------------ Fog of War -------------- */
     public Tilemap fogOfWar;
@@ -72,10 +72,16 @@ public class Unit : MonoBehaviour
 
         if(lifePoint <= 0){
             isDead = true;
-            if(gameObject.layer == 7){
+            if(gameObject.layer == 3){
+
+            }
+            else{
+                gameObject.layer = 8;
+            }
+            if(gameObject.layer == 8){
                 SpriteRenderer sp = GetComponent<SpriteRenderer>();
                 sp.color = Color.gray;
-
+                
                 LayerMask human = LayerMask.GetMask("Clickable");
                 if(Physics2D.OverlapCircle(transform.position,detectionRange,human)){
                     if(Input.GetKeyDown(recrut)){
@@ -83,7 +89,7 @@ public class Unit : MonoBehaviour
                         ennemy = LayerMask.GetMask("ennemy");
                         gameObject.layer = 3;
                         lifePoint = 100;
-                        sp.color = Color.red;
+                        sp.color = Color.green;
 
                     }
                     else if(Input.GetKeyDown(consum)){
@@ -98,11 +104,18 @@ public class Unit : MonoBehaviour
             if(pathComplete()){
                 isMoving = false;
             }
-    
+
             if(target != null){
-                
-                if(CheckDestroy.IsNullOrDestroyed(target) || target.GetComponent<Unit>().getLifePoint() <= 0){
+                if(target.GetComponent<Unit>().isDead == true){
+                    isAttacking = false; 
+                    isMoving = false;
                     target = null;
+                    return;
+                }
+                if(CheckDestroy.IsNullOrDestroyed(target)){
+                    target = null;
+                    isAttacking = false;
+                    isMoving = false;
                     return;
                 }
                 else if(Vector2.Distance(gameObject.transform.position,target.GetComponent<Transform>().position) <= range && !isAttacking){
@@ -176,18 +189,18 @@ public class Unit : MonoBehaviour
     }
 
     public void SetNewTarget(GameObject targ){
-        if(!isDead){
+        if(targ != null){
+            if(!isDead && targ.GetComponent<Unit>().isDead == false){
 
-            isAttacking = false;
-            if(targ != null){
-                if(targ.GetComponent<Unit>().getLifePoint() <= 0){
-                    return;
-                }
+                isAttacking = false;
                 this.SetDestination(targ.transform.position,range);
 
-            }
-            target = targ;
+                target = targ;
 
+            }
+        }
+        else{
+            target = targ;
         }
 
     }

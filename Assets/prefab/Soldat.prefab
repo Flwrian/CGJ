@@ -212,8 +212,9 @@ MonoBehaviour:
   detectionRange: 10
   ennemy:
     serializedVersion: 2
-    m_Bits: 136
+    m_Bits: 128
   team: 0
+  isDead: 0
   fogOfWar: {fileID: 8465826217944509825, guid: 3bc9769fef0d91dff984402f2a63c4a0, type: 3}
   fogTile: {fileID: 11400000, guid: 3c217b9ba896e07fbb651641ca72d33f, type: 2}
   appearRange: 10
