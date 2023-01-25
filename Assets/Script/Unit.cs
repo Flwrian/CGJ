@@ -10,6 +10,7 @@ public class Unit : MonoBehaviour
     private static KeyCode recrut = KeyCode.E; 
     
     private static KeyCode consum = KeyCode.A; 
+    private Vector2 previousPosition;
 
     [Header("CombatSection")]
     [SerializeField]
@@ -54,6 +55,8 @@ public class Unit : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
+        previousPosition = new Vector2(transform.position.x, transform.position.y);
         anim = GetComponent<Animator>();
         r = GetComponent<Rigidbody2D>();
         isDead = false;
@@ -75,9 +78,13 @@ public class Unit : MonoBehaviour
 
     void Update()
     {
-
+        Vector2Int pos = new Vector2Int(Mathf.RoundToInt(transform.position.x), Mathf.RoundToInt(transform.position.y));
+        if (pos != previousPosition)
+        {
+            updateFogOfWar();
+            previousPosition = pos;
+        }
         if(isMoving){
-                anim.SetBool("isWalk",true);
                 float x = agent.velocity.x;
                 float y = agent.velocity.y;
                 if(!(x == 0 && y == 0) && !isAttacking){//
@@ -113,43 +120,36 @@ public class Unit : MonoBehaviour
 
         }
         else{
-            anim.SetBool("isWalk",false);
         }
 
         if(lifePoint <= 0){
-            isDead = true;
+                        isDead = true;
             if(gameObject.layer == 3){
-                anim.SetBool("isSkeleton",true);
-            }
-            else{
 
             }
-            if(gameObject.layer == 8){
+            else{
                 gameObject.layer = 8;
-                anim.SetBool("isWalk",false);
-                anim.SetBool("isGrave",false);
-                anim.SetBool("isSkeleton",false);
-                anim.SetBool("isGrave",true);
+            }
+            if(gameObject.layer == 8){
                 SpriteRenderer sp = GetComponent<SpriteRenderer>();
                 sp.color = Color.gray;
                 
                 LayerMask human = LayerMask.GetMask("Clickable");
                 if(Physics2D.OverlapCircle(transform.position,detectionRange,human)){
                     if(Input.GetKeyDown(recrut)){
-                        anim.SetBool("isGrave",false);
-
                         isDead = false;
                         ennemy = LayerMask.GetMask("ennemy");
                         gameObject.layer = 3;
                         lifePoint = 100;
                         sp.color = Color.green;
-
+                        LinkUnit.Instance.addUnit(this.gameObject);
                     }
                     else if(Input.GetKeyDown(consum)){
-                        anim.SetBool("isSkeleton",true);
                         //commande pour boost le temps
                         // anim pour le squelette 
+                        //Timer.Instance.addTime(7);
                         Destroy(this.gameObject);
+                    
                     }
                 }
             }
@@ -161,11 +161,9 @@ public class Unit : MonoBehaviour
 
             if(target != null){
                 if(target.GetComponent<Unit>().isDead == true){
-                    isAttacking = false; 
                     isMoving = false;
                     target = null;
-                    anim.SetBool("isWalk",false);
-                    anim.SetBool("isAttack",false);
+                    isAttacking = false;
 
                     return;
                 }
@@ -173,18 +171,15 @@ public class Unit : MonoBehaviour
                     target = null;
                     isAttacking = false;
                     isMoving = false;
-                    anim.SetBool("isWalk",false);
 
                     return;
                 }
                 else if(Vector2.Distance(gameObject.transform.position,target.GetComponent<Transform>().position) <= range && !isAttacking){
                     isAttacking = true;
-                    anim.SetBool("isWalk",false);
 
                 }
                 else if(Vector2.Distance(gameObject.transform.position,target.GetComponent<Transform>().position) > range){
                     isAttacking = false;
-                    anim.SetBool("isAttack",false);        
 
                 }
                 
@@ -209,7 +204,6 @@ public class Unit : MonoBehaviour
             }
         }
 
-        //updateFogOfWar();
 
     }
 

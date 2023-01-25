@@ -208,7 +208,7 @@ MonoBehaviour:
   lifePoint: 100
   range: 8
   attackDelay: 1.2
-  damage: 20
+  damage: 35
   detectionRange: 10
   ennemy:
     serializedVersion: 2
