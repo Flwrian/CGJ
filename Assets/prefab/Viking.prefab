@@ -99,6 +99,7 @@ GameObject:
   - component: {fileID: 7317485319448425069}
   - component: {fileID: 7317485319448425068}
   - component: {fileID: 7317485319448425063}
+  - component: {fileID: -1474384182195555907}
   m_Layer: 3
   m_Name: Viking
   m_TagString: Untagged
@@ -163,7 +164,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 458506058, guid: aedc66d06c164bc2b88beefdade26185, type: 3}
+  m_Sprite: {fileID: 1252949011, guid: b5ef56c8b35441647965eadfb9073ecc, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -273,3 +274,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   autoHeal: 15
   healDelay: 10
+--- !u!95 &-1474384182195555907
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7317485319448425071}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: d4649d36f5705d24ea7e8af6058d99dd, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
